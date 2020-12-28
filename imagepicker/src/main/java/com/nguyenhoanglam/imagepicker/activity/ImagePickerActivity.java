@@ -739,9 +739,11 @@ public class ImagePickerActivity extends AppCompatActivity implements OnImageCli
                 being shown, hence send FETCH_STARTED message to show progress bar
                 while images are loaded from phone
                  */
-                message = handler.obtainMessage();
-                message.what = Constants.FETCH_STARTED;
-                message.sendToTarget();
+                if(handler!=null){
+                    message = handler.obtainMessage();
+                    message.what = Constants.FETCH_STARTED;
+                    message.sendToTarget();
+                }
             }
 
             if (Thread.interrupted()) {
@@ -751,7 +753,7 @@ public class ImagePickerActivity extends AppCompatActivity implements OnImageCli
             Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection,
                     null, null, MediaStore.Images.Media.DATE_ADDED);
 
-            if (cursor == null) {
+            if (cursor == null && handler!=null) {
                 message = handler.obtainMessage();
                 message.what = Constants.ERROR;
                 message.sendToTarget();
