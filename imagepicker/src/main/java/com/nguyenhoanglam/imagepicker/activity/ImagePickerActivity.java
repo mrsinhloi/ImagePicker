@@ -416,8 +416,8 @@ public class ImagePickerActivity extends AppCompatActivity implements OnImageCli
                     getData();
                     return;
                 }
-                Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
-                        " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
+//                Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
+//                        " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
                 finish();
             }
             case Constants.PERMISSION_REQUEST_CAMERA: {
@@ -426,12 +426,12 @@ public class ImagePickerActivity extends AppCompatActivity implements OnImageCli
                     captureImage();
                     return;
                 }
-                Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
-                        " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
+//                Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
+//                        " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
                 break;
             }
             default: {
-                Log.d(TAG, "Got unexpected permission result: " + requestCode);
+//                Log.d(TAG, "Got unexpected permission result: " + requestCode);
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
                 break;
             }
@@ -525,7 +525,7 @@ public class ImagePickerActivity extends AppCompatActivity implements OnImageCli
                             new MediaScannerConnection.OnScanCompletedListener() {
                                 @Override
                                 public void onScanCompleted(String path, Uri uri) {
-                                    Log.v(TAG, "File " + path + " was scanned successfully: " + uri);
+//                                    Log.v(TAG, "File " + path + " was scanned successfully: " + uri);
                                     getDataWithPermission();
                                 }
                             });
